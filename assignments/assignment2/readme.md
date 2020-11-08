@@ -1,19 +1,19 @@
 International Macroeconomics and Trade\
 BUSN 33946 & ECON 35101\
-Autumn 2019\
+Autumn 2020\
 Assignment 2\
-Due: 4 Nov 2019, 8:30am
+Due: 26 Oct 2020, 8:30am
 
 ### Deliverables
 
-For this assignment, please produce the following outputs:
+For this assignment, please produce the following five outputs that are described in detail below:
 
-1.  A table reporting a log-linear gravity regression estimated on 2000-2006 data. 
+1.  A table reporting a log-linear gravity regression estimated on 2000-2006 data.
     The table should have four columns, each employing a different Stata estimator to estimate the same specification:`reg`,`xtreg`,`areg`,`reghdfe`.
     Report the computation time associated with each.
 2.  A table with eight columns reporting the results of regressing trade flows for 2004-2006 on these same covariates when including observations for which trade flows are zero.
     Use the Stata estimators specified below.
-3.  A table reporting a race between `reghdfe` and `FixedEffectModels.jl` for the non-zero trade flows for the years 1948-2006.
+3.  A table reporting computation times in a race between `reghdfe`, `FixedEffectModels.jl`, and `fixest` for the non-zero trade flows for the years 1948-2006.
 4.  A PDF that contains the tables listed above and responses to the questions about them that appear below.
 5.  Code that produces all of the above.
 
@@ -28,7 +28,7 @@ Define a global variable for the filepath at the top of your scripts or, prefera
 
 #### Download data
 
-Grab the [`col_regfile09.zip`](http://econ.sciences-po.fr/sites/default/files/file/tmayer/data/col_regfile09.zip) file made available via the [Gravity Cookbook website](https://sites.google.com/site/hiegravity/data-sources) associated with the Head and Mayer (2014) handbook chapter.
+Grab the [`col_regfile09.zip`](col_regfile09.zip) file, which was made available via the [Gravity Cookbook website](https://sites.google.com/site/hiegravity/data-sources) associated with the Head and Mayer (2014) handbook chapter.
 This contains a 95 MB DTA file that is an unbalanced panel of trade flows between countries for 1948 to 2006.
 You will use the following variables:
  `flow`, `distw`, `iso_o`, `year`, `iso_d`, `contig`, `comlang_off`.
@@ -39,7 +39,7 @@ The `reg`, `xtreg`, `areg`, and `glm` packages are included in Stata by default.
 Install the `reghdfe`, `ppml`, `poi2hdfe`, `ppml_panel_sg`, and `ppmlhdfe` on your machine using the `ssc install` command.
 Use the `timer` function in Stata.
 
-Warning: 
+Warning:
 I find that `outreg2` can be quite slow if you have many fixed effects.
 I suggest using the `estout` package to produce TeX tables for this assignment.
 
@@ -83,15 +83,16 @@ file:
 
 1.  Are your results sensitive to the omission of zeros?
 2.  How well does making the dependent variable log(x+1) perform?
-3.  Examine the residuals from your log-linear regression. Are they heteroskedastic?
+3.  Examine the residuals from your log-linear regression. Are they heteroskedastic? Report a Breusch–Pagan test statistic and a scatterplot of the residuals that addresses this question.
 4.  How do the computation times compare?
 
-#### Table 3: Comparing Stata’s reghdfe and Julia’s FixedEffectModels
+#### Table 3: Comparing Stata’s reghdfe, Julia’s FixedEffectModels, R's fixest
 
 Now estimate the log-linear specification of Table 1 using non-zero trade flows for all years (1948-2006) using `reghdfe`.
-Compare the speed of this calculation to the speed of estimating it in Julia using the `FixedEffectModels` package.
-Use heteroskedastic-robust standard errors in both cases.
+Compare the speed of this calculation to the speed of estimating it in Julia using the `FixedEffectModels` package and in R using the `fixest` package.
+Use heteroskedastic-robust standard errors in all cases.
 
+Julia:
 -   Use the [StatFiles package](https://github.com/queryverse/StatFiles.jl) to load the
     DTA file.
 -   Use the [FixedEffectModels package](https://github.com/matthieugomez/FixedEffectModels.jl) to estimate.
@@ -99,11 +100,17 @@ Use heteroskedastic-robust standard errors in both cases.
 -   Use the [`@time` macro](https://docs.julialang.org/en/v1/manual/performance-tips/index.html) in Julia to track performance.
 -   Note that Julia functions are compiled the first time they are run, so the first run will be slow and you should not use the full-size data the first time you call your function.
 
+R:
+- Use the [foreign package](https://cran.r-project.org/web/packages/foreign/index.html) to load the DTA file.
+- Use the [fixest package](https://cran.r-project.org/web/packages/fixest/index.html) to estimate ([short intro to fixest](https://cran.r-project.org/web/packages/fixest/vignettes/fixest_walkthrough.html), [fixest at GitHub](https://github.com/lrberge/fixest)).
+- You likely know better than me how to export a pretty table from an R regression.
+- R-blogger's [5 ways to measure running time of R code](https://www.r-bloggers.com/5-ways-to-measure-running-time-of-r-code/)
+
 Include answers to the following questions in your submission:
 
-1.  Verify that `reghdfe` and `FixedEffectModels` return
+1.  Verify that `reghdfe`, `FixedEffectModels`, and `fixest` return
     identical estimates. Are the standard errors identical?
 2.  Which estimator is faster? By what magnitude?
-3.  How large are the gains from parallelizing the Julia computations in
-    line with the instructions in the [FixedEffectModels.jl](https://github.com/matthieugomez/FixedEffectModels.jl) documentation?
+<!-- 3.  How large are the gains from parallelizing the Julia computations in
+    line with the instructions in the [FixedEffectModels.jl](https://github.com/matthieugomez/FixedEffectModels.jl) documentation? -->
 

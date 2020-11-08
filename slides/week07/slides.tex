@@ -114,7 +114,7 @@ Exporting firms\dots
 \begin{frame}{Melitz (Ecma 2003)}
 \begin{itemize}
 \item Melitz (2003) is a model with heterogeneous firms and fixed costs of exporting that can speak to productivity premia and trade liberalization causing intra-industry reallocation
-\item One of the most cited papers of last 20 years (\href{https://scholar.google.com/citations?user=SqlfKBsAAAAJ&hl=en&oi=ao}{12k GS})
+\item One of the most cited papers of last 20 years (\href{https://scholar.google.com/citations?user=SqlfKBsAAAAJ&hl=en&oi=ao}{15k GS})
 \item Two building blocks:
 \begin{enumerate}
 	\item Krugman (AER 1980): CES preferences, IRS technology, monopolistic competition
@@ -151,7 +151,7 @@ r(\varphi) = R \left(P\rho\varphi\right)^{\sigma-1}
 \begin{frame}{Decentralized equilibrium is efficient}
 See \href{https://www.jstor.org/stable/1831401}{Dixit and Stiglitz (1977)} and \href{https://www.journals.uchicago.edu/doi/pdfplus/10.1086/700732}{Dhingra and Morrow (2019)}
 \begin{itemize}
-\item Decentralized equilibrium solves:
+\item Decentralized equilibrium solves revenue maximization:
 $$
 \max_{q_i,n} \int_{0}^{n} p_i(q_i) q_i \textrm{d}i 
 \qquad
@@ -386,6 +386,35 @@ F_j(z_1,z_2)
 \end{itemize}
 \end{frame}
 % -----------------------------------------
+\begin{frame}{Hsieh, Li, Ossa, Yang (2020)}
+\begin{itemize}\itemsep0em{\footnotesize
+\item 
+These `new' gains... are driven by changes in the set of firms serving a market.
+\item
+the import variety gains measured in studies such as Broda and Weinstein (2006) are counteracted by exactly analogous domestic variety losses
+\item
+the domestic productivity gains measured in studies such as Trefler (2004) are counteracted by exactly analogous import productivity losses\par
+}\end{itemize}
+$$
+X_{ij} \propto M_{ij} \left(\tilde{p}_{ij}/P_j\right)^{1-\sigma} Y_j, \quad
+\tilde{p}_{ij} \propto \frac{w_i \tau_{ij}}{\tilde{\varphi}_{ij}}, \quad
+Y_j \propto w_j L_j
+$$
+Welfare changes are $\Delta \ln W_j = \Delta \ln \left(Y_j / L_j\right) - \Delta \ln P_j$
+\begin{align*}
+\Delta \ln W_j
+&=
+\underbrace{
+\sum_{i=1}^{N} \bar{\lambda}_{ij} \left(\frac{1}{\sigma-1} \Delta \ln M_{ij} + \left(\Delta \ln \tilde{\varphi}_{ij} - \Delta \ln \tilde{\varphi}^{c}_{ij}\right) \right)
+}_{\text{`new' gains}}
+\\&+
+\underbrace{
+\sum_{i=1}^{N} \bar{\lambda}_{ij} \left(- \Delta \ln \tau_{ij} + \Delta \ln \tilde{\varphi}^{c}_{ij} + \left(\Delta \ln w_j - \Delta \ln w_i \right) \right)
+}_{\text{`traditional' gains}}
+\end{align*}
+\footnotesize{In Melitz (2003) w/ Pareto $G(\varphi)$ (e.g., ACR case), the `new' gains are exactly zero.\par}
+\end{frame}
+% -----------------------------------------
 \begin{frame}{Revisiting many questions with firm heterogeneity }
 \begin{itemize}
 \item Multiple factors of production (Bernard Redding Schott 2007)
@@ -498,7 +527,8 @@ Melitz's fixed-cost story faces an empirical tension
 	$$
 	f_{ij}(x) = f_{ij} \times \left[\frac{1-(1-x)^{1-\mu}}{1-\mu}\right]
 	$$
-	\item Same macro implications are Chaney (2008): Elasticity of aggregate trade flows wrt $\tau_{ij}$ is Pareto shape parameter
+	\item Same macro implications as Chaney (2008): Elasticity of aggregate trade flows wrt $\tau_{ij}$ is Pareto shape parameter
+  \item Connect to \href{https://www.minneapolisfed.org/research/staff-reports/an-evaluation-of-the-performance-ofapplied-general-equilibrium-models-of-the-impact-of-nafta}{Kehoe (2005)} critique of quantitative trade models and \href{https://www.journals.uchicago.edu/doi/full/10.1086/670272}{Kehoe and Ruhl (2013)} on new goods margin
 \end{itemize}
 \end{frame}
 % -----------------------------------------
@@ -640,6 +670,7 @@ See paper for calibration and numerical results for $n_x>0$ case
 In the next three weeks, we will turn to economic geography, including intranational trade
 \begin{itemize}
 \item Week 8: We introduce local increasing returns (agglomeration)
+\item[] Please read Dingel \& Tintelnot (2020) next weekend
 \item Week 9: We introduce models in which  monopolistic competition, trade costs, and mobile labor drive agglomeration
 \item Week 10: Economic geography with heterogeneous skills
 \end{itemize}
